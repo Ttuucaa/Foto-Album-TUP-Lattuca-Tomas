@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Album de Fotos</h1>
+<ul>
+    {% for photo in photos %}
+    <li>
+        <h2>{{ photo.title }}</h2>
+        <p>{{ photo.description }}</p>
+        <img src="/{{ photo.image }}" alt="{{ photo.title }}">
+        <form action="/delete/{{ photo.id }}" method="post">
+            <button type="submit">Eliminar</button>
+        </form>
+        <a href="/edit/{{ photo.id }}">Editar</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
